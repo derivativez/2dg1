@@ -1,0 +1,90 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.math.*;
+
+public class operator {
+
+	
+	public static void main(String[] args) {
+		boardGenerator b1 = new boardGenerator();
+		ArrayList<ArrayList> map = b1.map();
+		Scanner s = new Scanner(System.in);
+		
+		int xp = 0;
+		int yp = 0;
+		int xcpu = 0;
+		int ycpu = 0;
+		
+		boolean done = false;
+		
+		//printing random guy
+		boolean conflict = false;
+		while (!conflict) {
+			int x1 = (int)(Math.random()*9);
+			int y1 = (int)(Math.random()*4);
+			if (x1!=xcpu&&y1!=ycpu){
+				xcpu=x1;
+				ycpu = y1;
+				conflict=true;
+			}
+	}
+		//printing initial board state
+		for (int c = 0; c<4;c++) {
+			for (int i = 0; i<10;i++) {
+				if (c==ycpu&&i==xcpu) {
+					System.out.print("+ ");
+				}
+				else if (c==yp&&i==xp) {
+					System.out.print("x ");
+				}
+				else {
+				System.out.print(map.get(c).get(i));
+				}
+			}
+			System.out.println("");
+		}
+		//gameplay loop
+		while (done == false) {
+		//exit function
+		if (xp==xcpu&&yp==ycpu) {
+			System.out.println("Game Over!");
+			done=true;
+		}
+		else {
+		String input = s.nextLine();
+		if (input.equals("e")) {
+			done = true;
+			System.out.println("Done!");
+		}
+		else {
+			//keystroke responses
+		if (input.equals("s")&&yp<3) {yp++;}
+		if (input.equals("d")&&xp<9) {xp++;}
+		if (input.equals("a")&&xp>0) {xp--;}
+		if (input.equals("w")&&xp>1) {yp--;}
+		xcpu = (int)(Math.random()*9);
+		ycpu = (int)(Math.random()*4);
+		//board printer
+		for (int c = 0; c<4;c++) {
+			for (int i = 0; i<10;i++) {
+				if (c==ycpu&&i==xcpu&&c==yp&&i==xp) {
+					System.out.println("0");
+				}
+				else if (c==ycpu&&i==xcpu) {
+					System.out.print("+ ");
+				}
+				else if (c==yp&&i==xp) {
+					System.out.print("x ");
+				}
+				else {
+				System.out.print(map.get(c).get(i));
+				}
+			}
+			System.out.println("");
+		}//for loop close
+		}
+		}
+		}
+	}
+
+}
