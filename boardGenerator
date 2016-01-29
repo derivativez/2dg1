@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+
+public class boardGenerator {
+	
+	private ArrayList<ArrayList<String>> map = new ArrayList<ArrayList<String>>();
+	private ArrayList<String> line1;
+	private ArrayList<String> line2;
+	private ArrayList<String> line3;
+	private ArrayList<String> line4;
+	
+	public boardGenerator() {
+		ArrayList<String> semi = new ArrayList<String>();
+		for (int i = 0; i<10; i++) {
+		semi.add("- ");
+		}
+		line1=semi;
+		line2=semi;
+		line3=semi;
+		line4=semi;
+		map.add(line1);
+		map.add(line2);
+		map.add(line3);
+		map.add(line4);
+	}
+	
+	public ArrayList l1() {
+		return line1;
+	}
+	public ArrayList l2() {
+		return line2;
+	}
+	public ArrayList l3() {
+		return line3;
+	}
+	public ArrayList l4() {
+		return line4;
+	}
+	public ArrayList map() {
+		return map;
+	}
+}
